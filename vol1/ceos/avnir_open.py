@@ -1,0 +1,3 @@
+with open('./A1AVM19970414D064288P1395P360_200UCG6004/A1AVM19970414D064288P1395P360_200UCG6004.01',mode='rb') as fp:
+    fp.seek(0,0)
+    print(fp.read(10))

@@ -1,0 +1,22 @@
+with open('./A1AVM19970414D064288P1395P360_200UCG6004/A1AVM19970414D064288P1395P360_200UCG6004.02',mode='rb') as fp:
+    head = 4680
+    
+    fp.seek(head + 212,0)
+    print('シーンセンター緯度: {}'.format(float(fp.read(16).decode('utf-8'))))
+    print('シーンセンター経度: {}'.format(float(fp.read(16).decode('utf-8'))))
+    print('シーンセンターのライン値: {}'.format(float(fp.read(16).decode('utf-8'))))
+    print('シーンセンターのピクセル: {}'.format(float(fp.read(16).decode('utf-8'))))
+    print('オリエンテーション角度: {}'.format(float(fp.read(16).decode('utf-8'))))
+    fp.seek(head + 356,0)
+    print('昇降ノード: {}'.format(fp.read(16).decode('utf-8')))
+    print('オフナディアミラーポインティング角度: {}'.format(float(fp.read(16).decode('utf-8'))))
+    fp.seek(head + 452,0)
+    print('太陽角: {}'.format(fp.read(14).decode('utf-8')))
+    fp.seek(head + 1540,0)
+    print('リサンプリング法: {}'.format(fp.read(16).decode('utf-8')))
+    print('地図投影法: {}'.format(fp.read(16).decode('utf-8')))
+    fp.seek(head + 1732,0)
+    print('シーン左上座標: {}, {}'.format(float(fp.read(16).decode('utf-8')),float(fp.read(16).decode('utf-8'))))
+    print('シーン右上座標: {}, {}'.format(float(fp.read(16).decode('utf-8')),float(fp.read(16).decode('utf-8'))))
+    print('シーン左下座標: {}, {}'.format(float(fp.read(16).decode('utf-8')),float(fp.read(16).decode('utf-8'))))
+    print('シーン右下座標: {}, {}'.format(float(fp.read(16).decode('utf-8')),float(fp.read(16).decode('utf-8'))))

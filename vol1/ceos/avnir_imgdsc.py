@@ -1,0 +1,31 @@
+with open('./A1AVM19970414D064288P1395P360_200UCG6004/A1AVM19970414D064288P1395P360_200UCG6004.03',mode='rb') as fp:
+    head = 0
+
+    fp.seek(head + 180,0)
+    image_record = int(fp.read(6))
+    image_record_length = int(fp.read(6))
+    print('イメージレコード数: {}'.format(image_record))
+    print('イメージレコード長: {}'.format(image_record_length))
+    
+    fp.seek(head + 216,0)
+    print('1ピクセル当たりのビット数: {}'.format(int(fp.read(4))))
+    print('1データ当たりのバイト数: {}'.format(int(fp.read(4))))
+    fp.seek(head + 228,0)
+    endian_of_pixel = fp.read(4).decode('utf-8')
+    print('ピクセルのビット並び: {}'.format(endian_of_pixel))
+
+    fp.seek(head + 236,0)
+    line_number = int(fp.read(8))
+    print('1バンド当たりのライン数: {}'.format(line_number))
+    invalid_left_pixel = int(fp.read(4))
+    print('1ライン当たりの左縁無効ピクセル数: {}'.format(invalid_left_pixel))
+    pixel_number = int(fp.read(8))
+    print('1ライン当たりのイメージピクセル数: {}'.format(pixel_number))
+    invalid_right_pixel = int(fp.read(4))
+    print('1ライン当たりの右縁無効ピクセル数: {}'.format(invalid_right_pixel))
+    fp.seek(head + 280,0)
+    record_header_length = int(fp.read(4))
+    print('1レコード当たりのヘッダバイト数: {}'.format(record_header_length))   
+    fp.seek(head + 292,0)
+    record_suffix_length = int(fp.read(4))
+    print('1レコード当たりのサフィックスデータバイト数: {}'.format(record_suffix_length))

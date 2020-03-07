@@ -1,0 +1,26 @@
+with open('./A1AVM19970414D064288P1395P360_200UCG6004/A1AVM19970414D064288P1395P360_200UCG6004.01',mode='rb') as fp:
+    head = 0
+    print('raw')
+    fp.seek(head + 0,0)
+    print(fp.read(4))
+    print(fp.read(1))
+    print(fp.read(1))
+    print(fp.read(1))
+    print(fp.read(1))
+    print(fp.read(4))
+
+    print('convert')
+    fp.seek(head + 0,0)
+    print(int.from_bytes(fp.read(4), 'big'))
+    print(format(int.from_bytes(fp.read(1), 'big'), 'o'))
+    print(format(int.from_bytes(fp.read(1), 'big'), 'o'))
+    print(format(int.from_bytes(fp.read(1), 'big'), 'o'))
+    print(format(int.from_bytes(fp.read(1), 'big'), 'o'))
+    print(int.from_bytes(fp.read(4), 'big'))
+
+    fp.seek(head + 60,0)
+    print('プロダクトID: {}'.format(fp.read(32).decode('utf-8')))
+    fp.seek(head + 112,0)
+    print('処理日時: {} {}'.format(fp.read(8).decode('utf-8'), fp.read(8).decode('utf-8')))
+    fp.seek(head + 140,0)
+    print('データ作成機関: {}'.format(fp.read(8).decode('utf-8')))
